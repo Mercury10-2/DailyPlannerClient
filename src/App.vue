@@ -1,8 +1,7 @@
 <template>
-	<v-app>
-		<v-navigation-drawer app>
-		</v-navigation-drawer>
+	<v-app app>
 		<v-app-bar app>
+			<Bar/>
 		</v-app-bar>
 		<v-main>
 			<v-container fluid>
@@ -15,13 +14,17 @@
 </template>
 
 <script>
+import Bar from './components/Bar'
 import Weather from './components/Weather.vue'
 export default {
 	name: 'App',
-	components: { Weather }
+	components: { Bar, Weather }
 }
 </script>
 
 <style>
-
+/*
+* {
+	/* not uppercase !important
+}*/
 </style>
