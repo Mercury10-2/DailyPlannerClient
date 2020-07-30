@@ -1,11 +1,12 @@
+
 <template>
 	<v-app app>
 		<v-app-bar app>
-			<Bar/>
+			<Bar v-bind:setQuery="setQuery"/>
 		</v-app-bar>
 		<v-main>
-			<v-container fluid>
-				<Weather/>
+			<v-container app>
+				<Main v-bind:query="query"/>
 			</v-container>
 		</v-main>
 		<v-footer app>
@@ -15,16 +16,25 @@
 
 <script>
 import Bar from './components/Bar'
-import Weather from './components/Weather.vue'
+import Main from './components/Main.vue'
 export default {
 	name: 'App',
-	components: { Bar, Weather }
+	components: { Bar, Main },
+	data() {
+		return {
+			query: 'all-time'
+		}
+	},
+	methods: {
+		setQuery(arg) {
+			this.query = arg
+		}
+	}
 }
 </script>
 
 <style>
-/*
 * {
-	/* not uppercase !important
-}*/
+	text-transform: none !important;
+}
 </style>
