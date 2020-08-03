@@ -16,22 +16,7 @@ import Weather from './Weather'
 export default {
     name: 'Main',
     components: { Events, Weather },
-    props: [ 'query' ],/*
-    watch: {
-        query: {
-            immediate: true,
-            handler(newVal,) {
-                this.currentQuery = newVal
-            },
-        },
-    },*/
-    data() {
-        return {
-            //  currentQuery: ''
-        }
-    },
-    methods: {
-    }
+    props: [ 'query' ]
 }
 </script>
 

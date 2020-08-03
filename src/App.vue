@@ -38,3 +38,11 @@ export default {
 	text-transform: none !important;
 }
 </style>
+
+<!--
+
+<v-icon large>fab fa-pagelines</v-icon>
+<v-icon class="mdi-36px">mdi-leaf</v-icon>
+eco
+
+-->

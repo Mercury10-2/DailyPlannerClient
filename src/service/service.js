@@ -10,24 +10,16 @@ class Service {
         return axios.get(`${API_URL}/${EVENTS}/${query}`)
     }
 
-    retrieveAllCourses() {
-        return axios.get(`${API_URL}/courses`);
-    }
-    
-    deleteCourse(name, id) {
-        return axios.delete(`${API_URL}/courses/${id}`);
+    markDone(id, query) {
+        return axios.put(`${API_URL}/${EVENTS}/${id}/${query}`)
     }
 
-    retrieveCourse(name, id) {
-        return axios.get(`${API_URL}/courses/${id}`);
+    editEvent(id, header, comment, date, month, year, hour, minute, query) {
+        return axios.put(`${API_URL}/${EVENTS}/${id}/${header}/${comment}/${date}/${month}/${year}/${hour}/${minute}/${query}`)
     }
+
     updateCourse(name, id, course) {
-        //console.log('executed service')
         return axios.put(`${API_URL}/courses/${id}`, course);
-    }
-    createCourse(name, course) {
-
-        return axios.post(`${API_URL}/courses/`, course);
     }
 }
 

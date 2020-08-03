@@ -1,10 +1,11 @@
-
+<!-- menu - scale transition, rounded -->
 <template>
     <v-app-bar fixed color="#6A76AB" dark v-bind:src="background" app>
         <template v-slot:img="{ props }">
             <v-img v-bind="props" gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)" ></v-img>
         </template>
         <v-spacer></v-spacer>
+        <v-icon class="mr-4">mdi-leaf</v-icon>
         <v-toolbar-title>Ежедневник</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>

@@ -1,7 +1,12 @@
 
 <template>
     <div>
-        <Event v-for="event in events" v-bind:key="event.id"/>
+        <Event
+                v-for="event in events"
+                v-bind:key="event.id"
+                v-bind:event="event"
+                v-bind:markDone="markDone"
+                v-bind:editEvent="editEvent"/>
     </div>
 </template>
 
@@ -19,7 +24,19 @@ export default {
     },
     methods: {
         getEvents() {
-            Service.getEvents()
+            Service.getEvents(this.query)
+                .then(response => {
+                    this.events = response.data
+                })
+        },
+        markDone(id) {
+            Service.markDone(id, this.query)
+                .then(response => {
+                    this.events = response.data
+                })
+        },
+        editEvent(id, header, comment, date, month, year, hour, minute) {
+            Service.editEvent(id, header, comment, date, month, year, hour, minute, this.query)
                 .then(response => {
                     this.events = response.data
                 })
