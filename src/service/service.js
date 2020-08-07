@@ -18,8 +18,13 @@ class Service {
         return axios.put(`${API_URL}/${EVENTS}/${id}/${header}/${comment}/${date}/${month}/${year}/${hour}/${minute}/${query}`)
     }
 
+    editEventJson(dto) {
+        console.log(dto + ' &&')
+        return axios.put(`${API_URL}/${EVENTS}/${dto}`)
+    }
+
     updateCourse(name, id, course) {
-        return axios.put(`${API_URL}/courses/${id}`, course);
+        return axios.put(`${API_URL}/courses/${id}`, course)
     }
 }
 

@@ -24,6 +24,7 @@
             <v-card>
                 <v-card-text>
                     <v-container>
+                        <v-card-subtitle class="deep-orange--text">{{ incorrectData }}</v-card-subtitle>
                         <v-row>
                             <v-col cols="12" sm="10" md="8">
                                 <v-text-field label="Заголовок" v-model="header" v-bind:rules="headerRules"></v-text-field>
@@ -33,7 +34,6 @@
                             <v-col cols="12">
                                 <v-text-field label="Комментарий" v-model="comment" v-bind:rules="commentRules"></v-text-field>
                             </v-col>
-                            <div class="text-center"><p>{{ incorrectData }}</p></div>
                         </v-row>
                         <v-row>
                             <v-col cols="12" sm="2" md="2">
@@ -91,7 +91,7 @@ export default {
             minuteRules: [ v => (v > -1 && v < 60) || 'От 0 до 59'],
             incorrectData: ''
         }
-    },
+    },/*
     watch: {
         dialog: {
             immediate: true,
@@ -100,7 +100,7 @@ export default {
                     this.setData()
             }
         }
-    },
+    },*/
     methods: {
         setData() {
             const d = new Date()
@@ -113,15 +113,12 @@ export default {
             this.minute = d.getMinutes()
             this.incorrectData = ''
         },
-        edit() {                                    //  Передавать объект JSON ?
-            //console.log(this.date)
-            //console.log(this.month)     //  Проверка на корректность перед отправлением серверу. Rules не блокируют отправление.
+        edit() {
             if (this.date <= this.checkDaysInMonth(this.month, this.year)) {
+                this.editEvent(this.event.id, this.header, this.comment, this.date, this.month, this.year, this.hour, this.minute)
                 this.dialog = false
-                this.editEvent(event.id, this.header, this.comments, this.date, this.month, this.year, this.hour, this.minute)
-            } else {
-                this.incorrectData = 'Нет такой даты для выбранного месяца.'
-            }
+            } else
+                this.incorrectData = 'Нет такой даты в выбранном месяце.'
         },
         del() {
             this.dialog = false

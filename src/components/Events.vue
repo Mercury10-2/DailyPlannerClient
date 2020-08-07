@@ -22,6 +22,14 @@ export default {
             events: []
         }
     },
+    watch: {
+        query: {
+            immediate: true,
+            handler() {
+                this.getEvents()
+            }
+        }
+    },
     methods: {
         getEvents() {
             Service.getEvents(this.query)
@@ -39,7 +47,22 @@ export default {
             Service.editEvent(id, header, comment, date, month, year, hour, minute, this.query)
                 .then(response => {
                     this.events = response.data
-                })
+                })/*
+            const dto = {
+                "id": id,
+                "header": header,
+                "comment": comment,
+                "date": date,
+                "month": month,
+                "year": year,
+                "hour": hour,
+                "minute": minute,
+                "query": this.query,
+            }
+            Service.editEventJson(JSON.stringify(dto))
+                .then(response => {
+                    this.events = response.data
+                })*/
         }
     },
     created() {
