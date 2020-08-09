@@ -16,7 +16,7 @@
 
 <script>
 import Bar from './components/Bar'
-import Main from './components/Main.vue'
+import Main from './components/Main.vue'		//	Погоду равномерно разместить по экрану
 export default {
 	name: 'App',
 	components: { Bar, Main },

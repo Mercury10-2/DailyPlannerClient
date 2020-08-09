@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:8080'
 const EVENTS = 'events'
+const CALENDAR = 'calendar'
 
 class Service {
 
@@ -16,6 +17,10 @@ class Service {
 
     editEvent(id, header, comment, date, month, year, hour, minute, query) {
         return axios.put(`${API_URL}/${EVENTS}/${id}/${header}/${comment}/${date}/${month}/${year}/${hour}/${minute}/${query}`)
+    }
+
+    getCalendar() {
+        return axios.get(`${API_URL}/${CALENDAR}`)
     }
 
     editEventJson(dto) {

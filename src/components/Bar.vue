@@ -35,6 +35,10 @@
                 <v-tab v-on:click="query('closed')">Закрытые</v-tab>
                 <v-tab v-on:click="query('calendar')">Календарь</v-tab>
                 <v-tab v-on:click="query('weather')">Погода</v-tab>
+                <v-spacer></v-spacer>
+                <v-spacer></v-spacer>
+                <v-tab v-on:click="createEvent()">Создать событие</v-tab>
+                <v-spacer></v-spacer>
             </v-tabs>
         </template>
     </v-app-bar>
