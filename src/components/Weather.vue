@@ -139,9 +139,6 @@
             </v-row>
         </v-container>
         <v-divider></v-divider>
-        <v-card-actions>
-            <v-btn text>Full Report</v-btn>
-        </v-card-actions>
     </v-card>
 </template>
 

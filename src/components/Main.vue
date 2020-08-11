@@ -8,7 +8,7 @@
             <Calendar/>
         </div>
         <div v-else>
-            <Events v-bind:query="query"/>
+            <Events v-bind:query="query" v-bind:create="create" v-bind:deleteAll="deleteAll"/>
         </div>
     </v-container>
 </template>
@@ -20,7 +20,7 @@ import Weather from './Weather'
 export default {
     name: 'Main',
     components: { Events, Calendar, Weather },
-    props: [ 'query' ]
+    props: [ 'query', 'create', 'deleteAll' ]
 }
 </script>
 

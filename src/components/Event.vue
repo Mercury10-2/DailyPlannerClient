@@ -19,10 +19,20 @@
             </div>
         </v-col>
         <v-col cols="12" sm="2" md="2">
-            <Form v-bind:event="event" v-bind:editEvent="editEvent" v-bind:view="time"/>
+            <Form
+                    v-bind:event="event"
+                    v-bind:editEvent="editEvent"
+                    v-bind:view="time"
+                    v-bind:create="create"
+                    v-bind:del="del"/>
         </v-col>
         <v-col cols="12" sm="4" md="4">
-            <Form v-bind:event="event" v-bind:editEvent="editEvent" v-bind:view="comment"/>
+            <Form
+                    v-bind:event="event"
+                    v-bind:editEvent="editEvent"
+                    v-bind:view="comment"
+                    v-bind:create="create"
+                    v-bind:del="del"/>
         </v-col>
     </v-row>
 </template>
@@ -32,11 +42,12 @@ import Form from './Form'
 export default {
     name: 'Event',
     components: { Form },
-    props: [ 'event', 'markDone', 'editEvent' ],
+    props: [ 'event', 'markDone', 'editEvent', 'del' ],
     data() {
         return {
             comment: 'comment',
-            time: 'time'
+            time: 'time',
+            create: false
         }
     }
 }

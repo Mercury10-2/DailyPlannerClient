@@ -72,9 +72,7 @@
                 </div>
                 <div v-else>
                     <v-btn color="blue darken-1" text v-on:click="edit()">Изменить</v-btn>
-                    <v-btn text v-on:click="dialog = false">
-                        <Delete v-bind:del="del" v-bind:event="event"/>
-                    </v-btn>
+                    <v-btn color="blue darken-1" text v-on:click="del()">Удалить</v-btn>
                 </div>
                 </v-card-actions>
             </v-card>
@@ -84,11 +82,9 @@
 
 <script>
 import Service from '../service/service.js'
-import Delete from './Delete'
 export default {
     name: 'Form',
-    props: [ 'event', 'editEvent', 'view', 'create', 'createEvent', 'del' ],
-    components: { Delete },
+    props: [ 'event', 'editEvent', 'view', 'create', 'createEventTrigger' ],
     data() {
         return {
             dialog: false,
@@ -112,15 +108,6 @@ export default {
             incorrectData: ''
         }
     },
-    watch: {
-        create: {
-            immediate: true,
-            handler() {
-                if (this.create == true)
-                    this.this.dialog = true
-            }
-        }
-    },
     methods: {
         setData() {
             if (this.create) {
@@ -138,8 +125,10 @@ export default {
             this.minute = d.getMinutes()
             this.incorrectData = ''
         },
-        eventCreation() {
-            Service.createEvent(this.header, this.comment, this.date, this.month, this.year, this.hour, this.minute)
+        createEvent() {
+            Service.createEvent(this.header, this.comment, this.date, this.month, this.year, this.hour, this.minute, 'all-time')
+            this.dialog = false
+            this.createEventTrigger()
         },
         edit() {
             if (this.date <= this.checkDaysInMonth(this.month, this.year)) {
@@ -147,6 +136,9 @@ export default {
                 this.dialog = false
             } else
                 this.incorrectData = 'Нет такой даты в выбранном месяце.'
+        },
+        del() {
+            this.dialog = false
         },
         checkDaysInMonth (month, year) {
             return new Date(year, month, 0).getDate();

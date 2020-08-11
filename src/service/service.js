@@ -15,6 +15,10 @@ class Service {
         return axios.put(`${API_URL}/${EVENTS}/${id}/${query}`)
     }
 
+    createEvent(header, comment, date, month, year, hour, minute, query) {
+        return axios.post(`${API_URL}/${EVENTS}/${header}/${comment}/${date}/${month}/${year}/${hour}/${minute}/${query}`)
+    }
+
     editEvent(id, header, comment, date, month, year, hour, minute, query) {
         return axios.put(`${API_URL}/${EVENTS}/${id}/${header}/${comment}/${date}/${month}/${year}/${hour}/${minute}/${query}`)
     }
@@ -23,13 +27,12 @@ class Service {
         return axios.get(`${API_URL}/${CALENDAR}`)
     }
 
-    editEventJson(dto) {
-        console.log(dto + ' &&')
-        return axios.put(`${API_URL}/${EVENTS}/${dto}`)
+    deleteEvent(id, query) {
+        return axios.delete(`${API_URL}/${EVENTS}/${id}/${query}`)
     }
 
-    updateCourse(name, id, course) {
-        return axios.put(`${API_URL}/courses/${id}`, course)
+    delAll() {
+        return axios.delete(`${API_URL}/${EVENTS}`)
     }
 }
 

@@ -1,4 +1,4 @@
-<!-- menu - scale transition, rounded -->
+
 <template>
     <v-app-bar fixed color="#6A76AB" dark v-bind:src="background" app>
         <template v-slot:img="{ props }">
@@ -10,24 +10,11 @@
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
+<!--
         <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
+            <DeleteAll v-bind:delAll="delAll()"/>
         </v-btn>
-        <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-        </v-btn>
-        <v-menu bottom left>
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn icon color="yellow" v-bind="attrs" v-on="on">
-                    <v-icon>mdi-dots-vertical</v-icon>
-                </v-btn>
-            </template>
-            <v-list>
-                <v-list-item v-for="(item, i) in menuList" v-bind:key="i">
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item>
-            </v-list>
-        </v-menu>
+-->
         <template v-slot:extension>
             <v-tabs align-with-title>
                 <v-tab v-on:click="query('all-time')" >Все события</v-tab>
@@ -37,7 +24,9 @@
                 <v-tab v-on:click="query('weather')">Погода</v-tab>
                 <v-spacer></v-spacer>
                 <v-spacer></v-spacer>
-                <v-tab v-on:click="createEvent()">Создать событие</v-tab>
+                <v-tab v-on:click="createEvent()">
+                    <CreateEvent v-bind:createEventTrigger="createEventTrigger" v-bind:create="create"/>
+                </v-tab>
                 <v-spacer></v-spacer>
             </v-tabs>
         </template>
@@ -45,17 +34,15 @@
 </template>
 
 <script>
+//import DeleteAll from './DeleteAll'
+import CreateEvent from './CreateEvent'
 export default {
     name: 'Bar',
-    props: [ 'setQuery' ],
+    components: { CreateEvent/*, DeleteAll*/ },
+    props: [ 'setQuery', 'createEventTrigger', 'delAll' ],
     data: () => ({
         background: require('../assets/Water.jpeg'),
-        menuList: [
-            { title: 'Click Me' },
-            { title: 'Click Me' },
-            { title: 'Click Me' },
-            { title: 'Click Me 2' },
-        ],
+        create: true
     }),
     methods: {
         query(arg) {

@@ -6,7 +6,8 @@
                 v-bind:key="event.id"
                 v-bind:event="event"
                 v-bind:markDone="markDone"
-                v-bind:editEvent="editEvent"/>
+                v-bind:editEvent="editEvent"
+                v-bind:del="del"/>
     </div>
 </template>
 
@@ -15,7 +16,7 @@ import Service from '../service/service.js'
 import Event from './Event'
 export default {
     name: 'Events',
-    props: [ 'query' ],
+    props: [ 'query', 'create', 'deleteAll' ],
     components: { Event },
     data() {
         return {
@@ -27,6 +28,22 @@ export default {
             immediate: true,
             handler() {
                 this.getEvents()
+            }
+        },
+        create: {
+            immediate: true,
+            handler() {
+                if (this.create == true)
+                    this.getEvents()
+            }
+        },
+        deleteAll: {
+            immediate: true,
+            handler() {
+                if (this.deleteAll == true) {
+                    Service.delAll()
+                    this.getEvents()
+                }
             }
         }
     },
@@ -43,26 +60,20 @@ export default {
                     this.events = response.data
                 })
         },
+        createEvent(eventData) {
+            console.log(eventData)
+        },
         editEvent(id, header, comment, date, month, year, hour, minute) {
             Service.editEvent(id, header, comment, date, month, year, hour, minute, this.query)
                 .then(response => {
                     this.events = response.data
-                })/*
-            const dto = {
-                "id": id,
-                "header": header,
-                "comment": comment,
-                "date": date,
-                "month": month,
-                "year": year,
-                "hour": hour,
-                "minute": minute,
-                "query": this.query,
-            }
-            Service.editEventJson(JSON.stringify(dto))
+                })
+        },
+        del(id) {
+            Service.deleteEvent(id, this.query)
                 .then(response => {
                     this.events = response.data
-                })*/
+                })
         }
     },
     created() {
