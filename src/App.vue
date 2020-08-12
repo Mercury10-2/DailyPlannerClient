@@ -16,14 +16,14 @@
 
 <script>
 import Bar from './components/Bar'
-import Main from './components/Main.vue'			//	Почистить код от комментариев
+import Main from './components/Main.vue'
 export default {
 	name: 'App',
 	components: { Bar, Main },
 	data() {
 		return {
-			query: 'all-time',
-			create: false,						//	Меню события в календаре	Список событий отредактировать
+			query: 'weather',
+			create: false,
 			deleteAll: false
 		}
 	},
