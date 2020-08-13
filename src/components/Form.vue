@@ -17,9 +17,16 @@
                         </div>
                     </div>
                     <div v-else>
-                        <v-btn text small v-bind="attrs" v-on="on">
-                            {{ event.comments }}
-                        </v-btn>
+                        <div v-if="event.completed">
+                            <v-btn text small color="green darken-4" v-bind="attrs" v-on="on">
+                                {{ event.comments }}
+                            </v-btn>
+                        </div>
+                        <div v-else>
+                            <v-btn text small v-bind="attrs" v-on="on">
+                                {{ event.comments }}
+                            </v-btn>
+                        </div>
                     </div>
                 </div>
                 <div v-else>

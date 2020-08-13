@@ -3,7 +3,7 @@
     <v-row no-gutters>
         <v-col cols="12" sm="1" md="1">
             <div v-if="event.completed">
-                <v-icon color="green darken-3">fab fa-pagelines</v-icon>
+                <v-icon color="green darken-3">done</v-icon>
             </div>
         </v-col>
         <v-col cols="12" sm="3" md="3">
