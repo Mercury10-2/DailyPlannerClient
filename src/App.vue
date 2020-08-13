@@ -22,7 +22,7 @@ export default {
 	components: { Bar, Main },
 	data() {
 		return {
-			query: 'weather',
+			query: 'all-time',
 			create: false,
 			deleteAll: false
 		}
