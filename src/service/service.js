@@ -1,7 +1,8 @@
 
 import axios from 'axios'
 
-const API_URL = 'http://localhost:8080'
+//  const API_URL = 'http://localhost:8080'
+const API_URL = 'https://dailyplanner2020ru.herokuapp.com'
 const EVENTS = 'events'
 const CALENDAR = 'calendar'
 
